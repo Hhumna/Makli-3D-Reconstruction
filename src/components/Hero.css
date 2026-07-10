@@ -1,0 +1,215 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem 4.5rem;
+  background:
+    linear-gradient(180deg, rgba(33, 29, 24, 0.28) 0%, rgba(33, 29, 24, 0.7) 100%),
+    linear-gradient(120deg, rgba(201, 185, 154, 0.3), rgba(28, 107, 115, 0.24));
+  color: var(--color-bone);
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/hero-skyline.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+}
+
+.hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(33, 29, 24, 0.18) 0%, rgba(33, 29, 24, 0.78) 100%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 860px);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-sandstone);
+}
+
+.hero__headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  line-height: 0.95;
+  max-width: 900px;
+  color: var(--color-bone);
+}
+
+.hero__subhead {
+  margin: 0;
+  max-width: 720px;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--color-sandstone);
+}
+
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--color-bone);
+}
+
+.hero__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+}
+
+.hero__stat::after {
+  content: '·';
+  color: var(--color-aged-gold);
+  font-size: 1rem;
+}
+
+.hero__stat:last-child::after {
+  content: '';
+}
+
+.hero__strata {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60%;
+  height: 2px;
+  background: var(--color-aged-gold);
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.hero__silhouettes {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero__silhouette {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: min(78vw, 780px);
+  height: 28vh;
+  transform: translateX(-50%) translateY(0);
+  opacity: 0.95;
+}
+
+.hero__silhouette svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-bone);
+  z-index: 3;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(180deg, var(--color-bone), rgba(239, 232, 216, 0));
+  animation: hero-draw 1.6s ease-out forwards;
+  transform-origin: top;
+}
+
+.hero__scroll-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+@keyframes hero-draw {
+  from {
+    transform: scaleY(0.1);
+    opacity: 0.1;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    align-items: flex-end;
+    padding: 6rem 1rem 5rem;
+  }
+
+  .hero__content {
+    gap: 1rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .hero__headline {
+    font-size: clamp(2.1rem, 8vw, 2.8rem);
+  }
+
+  .hero__subhead {
+    font-size: 0.98rem;
+  }
+
+  .hero__stats {
+    gap: 0.5rem 0.75rem;
+    font-size: 0.84rem;
+  }
+
+  .hero__stat {
+    flex-basis: calc(50% - 0.4rem);
+    white-space: normal;
+  }
+
+  .hero__stat::after {
+    display: none;
+  }
+
+  .hero__strata {
+    top: 58%;
+  }
+
+  .hero__silhouette {
+    width: min(92vw, 620px);
+    height: 24vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll-line {
+    animation: none;
+  }
+
+  .hero__silhouettes {
+    transform: none !important;
+  }
+}

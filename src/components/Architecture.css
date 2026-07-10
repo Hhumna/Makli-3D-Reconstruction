@@ -1,0 +1,126 @@
+.architecture {
+  padding: 6rem 1.5rem 4.5rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(201, 185, 154, 0.12));
+}
+
+.architecture__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.05fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.architecture__gallery {
+  position: sticky;
+  top: 5.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.architecture__frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 1.15rem;
+  overflow: hidden;
+  border: 1px solid rgba(33, 29, 24, 0.12);
+  background: linear-gradient(135deg, rgba(201, 185, 154, 0.4), rgba(239, 232, 216, 0.9));
+  box-shadow: 0 20px 40px rgba(33, 29, 24, 0.08);
+}
+
+.architecture__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.architecture__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem;
+  color: rgba(33, 29, 24, 0.5);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.architecture__placeholder-icon {
+  font-size: 1.8rem;
+}
+
+.architecture__content {
+  display: grid;
+  gap: 1rem;
+}
+
+.architecture__feature {
+  padding: 1.1rem 1.2rem;
+  border: 1px solid rgba(33, 29, 24, 0.1);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 12px 28px rgba(33, 29, 24, 0.04);
+}
+
+.architecture__feature.is-in-view {
+  border-color: var(--color-tile-teal);
+  box-shadow: 0 16px 36px rgba(28, 107, 115, 0.14);
+}
+
+.architecture__feature-title {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-basalt);
+}
+
+.architecture__feature-text {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--color-basalt);
+}
+
+.architecture__quote {
+  padding: 1.25rem 1.3rem;
+  border-left: 3px solid var(--color-aged-gold);
+  background: rgba(28, 107, 115, 0.08);
+  color: var(--color-tile-teal);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+@media (max-width: 767px) {
+  .architecture {
+    padding: 5rem 1rem 3.5rem;
+  }
+
+  .architecture__inner {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .architecture__gallery {
+    position: static;
+  }
+
+  .architecture__frame {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .architecture__feature {
+    transition: none;
+  }
+}

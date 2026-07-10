@@ -1,0 +1,116 @@
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  padding: 1rem 1.5rem;
+  transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.site-header--solid {
+  background: var(--color-basalt);
+  color: var(--color-bone);
+  box-shadow: 0 8px 24px rgba(33, 29, 24, 0.16);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1120px;
+  margin: 0 auto;
+  min-height: 3.25rem;
+}
+
+.site-header__wordmark {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-header__nav a,
+.site-header__menu-toggle {
+  color: inherit;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.35rem 0.45rem;
+}
+
+.site-header__nav a:hover,
+.site-header__menu-toggle:hover {
+  opacity: 0.8;
+}
+
+.site-header__menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+
+.site-header__menu{
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    padding: 0.9rem 1rem;
+  }
+
+  .site-header__nav {
+    display: none;
+  }
+
+  .site-header__menu-toggle {
+    display: inline-flex;
+  }
+
+  .site-header__menu {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    background: var(--color-basalt);
+    color: var(--color-bone);
+    padding: 2rem;
+  }
+
+  .site-header__menu a {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+}
+
+.site-header a:focus-visible,
+.site-header button:focus-visible {
+  outline: 2px solid var(--color-tile-teal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-header__menu {
+    transition: none;
+  }
+}

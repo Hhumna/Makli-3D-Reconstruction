@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "source": "UNESCO World Heritage Centre — Historical Monuments at Makli, Thatta",
+    "type": "Primary / Official",
+    "usedFor": "UNESCO status, OUV criteria, threats",
+    "url": "https://whc.unesco.org/en/list/143/"
+  },
+  {
+    "id": 2,
+    "source": "UNESCO World Heritage Centre — State of Conservation reports (2012, 2013, 2017)",
+    "type": "Primary / Official",
+    "usedFor": "Conservation history, monitoring missions",
+    "url": "https://whc.unesco.org/en/soc/120/"
+  },
+  {
+    "id": 3,
+    "source": "UNESCO Silk Roads Programme — Historical Monuments at Makli",
+    "type": "Primary / Official",
+    "usedFor": "Regional/historical context",
+    "url": "https://en.unesco.org/silkroad/silk-road-themes/world-heritage-sites/historical-monuments-makli-thatta"
+  },
+  {
+    "id": 4,
+    "source": "Wikipedia — Makli Necropolis",
+    "type": "Overview / Secondary",
+    "usedFor": "General facts, scale, timeline (cross-checked against UNESCO)",
+    "url": "https://en.wikipedia.org/wiki/Makli_Necropolis"
+  },
+  {
+    "id": 5,
+    "source": "Britannica — Makli Hill",
+    "type": "Overview / Secondary",
+    "usedFor": "General historical overview",
+    "url": "https://www.britannica.com/place/Makli-Hill"
+  },
+  {
+    "id": 6,
+    "source": "Real Pakistan — Makli Necropolis Guide",
+    "type": "Secondary",
+    "usedFor": "Local/cultural context, name legend",
+    "url": "https://realpakistan.com.pk/makli-necropolis-thatta/"
+  },
+  {
+    "id": 7,
+    "source": "Rethinking The Future — UNESCO World Heritage Sites: Makli Necropolis",
+    "type": "Secondary / Analysis",
+    "usedFor": "Architecture and conservation analysis",
+    "url": "https://www.re-thinkingthefuture.com/travel-and-architecture/a12706-unesco-world-heritage-sites-makli-necropolis/"
+  },
+  {
+    "id": 8,
+    "source": "Dawn — Govt May Get Time for Makli Necropolis Conservation",
+    "type": "News",
+    "usedFor": "2012 UNESCO danger-list discussion",
+    "url": "https://www.dawn.com/news/741808/inclusion-in-list-of-world-heritage-in-danger-govt-may-get-time-for-makli-necropolis-conservation"
+  },
+  {
+    "id": 9,
+    "source": "MintPress News — A New Life or a Final Breath for World's Largest Necropolis?",
+    "type": "News",
+    "usedFor": "Heritage Foundation Pakistan conservation work",
+    "url": "https://www.mintpressnews.com/a-new-life-or-a-final-breath-for-worlds-largest-necropolis/197730/"
+  },
+  {
+    "id": 10,
+    "source": "UNESCO — Strengthens Capacity of the Government of Sindh in Preserving Makli",
+    "type": "Primary / Official",
+    "usedFor": "2022 monsoon damage, 2025 restoration workshop",
+    "url": "https://www.unesco.org/en/articles/unesco-strengthens-capacity-government-sindh-preserving-historical-monuments-makli-thatta-pakistan"
+  },
+  {
+    "id": 11,
+    "source": "Archaeology & Museums Department, Government of Sindh",
+    "type": "Primary / Official",
+    "usedFor": "Provincial custodianship context",
+    "url": "https://culture.sindh.gov.pk/"
+  }
+]
