@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './History.css'
+import imagesData from '../data/images.json'
 
 const dynasties = [
   {
@@ -8,6 +9,7 @@ const dynasties = [
     body:
       'Rajput princes took Thatta in 1335, and the necropolis expanded under their rule. Tombs from this era show strong Gujarati influence fused with Hindu and Muslim decorative vocabularies.',
     anchorMonument: 'Tomb of Jam Nizamuddin II (completed 1510)',
+    imageId: 'samma-dynasty',
   },
   {
     name: 'Arghun Dynasty',
@@ -15,6 +17,7 @@ const dynasties = [
     body:
       'The Arghuns succeeded the Samma and continued to shape the necropolis as Thatta remained a regional center of power. Their building programme extended the funerary landscape and helped consolidate the city’s prestige.',
     anchorMonument: 'Continued expansion of the necropolis as a courtly funerary landscape',
+    imageId: 'arghun-dynasty',
   },
   {
     name: 'Tarkhan Dynasty',
@@ -22,6 +25,7 @@ const dynasties = [
     body:
       'The Tarkhans oversaw some of the most architecturally elaborate tombs in the complex, especially around the late 16th and early 17th centuries. The period is marked by ambitious mausolea and richly decorated structures that bridge the late medieval and Mughal eras.',
     anchorMonument: 'Isa Khan Hussain II Tarkhan mausoleum and the blue-and-turquoise tomb of Jan Beg Tarkhan',
+    imageId: 'tarkhan-dynasty',
   },
   {
     name: 'Mughal Period',
@@ -29,8 +33,14 @@ const dynasties = [
     body:
       'Thatta was governed in the name of the Delhi emperors during the Mughal period, and construction continued until Sindh was ceded to Nadir Shah of Iran in 1739. After that, Makli entered a long decline as the city’s political dominance waned.',
     anchorMonument: 'Mughal-era funerary construction at Makli and Thatta',
+    imageId: 'mughal-dynasty',
   },
 ]
+
+const getImageUrl = (imageId) => {
+  const image = imagesData.find((img) => img.id === imageId)
+  return image ? image.url : ''
+}
 
 function History() {
   const [visibleBands, setVisibleBands] = useState([])
@@ -83,6 +93,26 @@ function History() {
               className={`history__band${isRight ? ' history__band--right' : ' history__band--left'}${isVisible ? ' is-visible' : ''}`}
             >
               <div className="history__label">{dynasty.name}</div>
+              {dynasty.imageId && (
+                <div className="history__image">
+                  <img
+                    key={getImageUrl(dynasty.imageId)}
+                    src={getImageUrl(dynasty.imageId)}
+                    alt={`${dynasty.name} - ${dynasty.period}`}
+                    loading="eager"
+                    decoding="async"
+                    crossOrigin="anonymous"
+                    onLoad={(e) => {
+                      e.target.style.display = 'block'
+                      e.target.parentElement.style.background = 'none'
+                    }}
+                    onError={(e) => {
+                      e.target.parentElement.style.background = 'linear-gradient(135deg, rgba(201, 185, 154, 0.3), rgba(28, 107, 115, 0.1))'
+                      e.target.style.display = 'none'
+                    }}
+                  />
+                </div>
+              )}
               <div className="history__content">
                 <p className="history__meta">{dynasty.period}</p>
                 <h3 className="history__heading">{dynasty.name}</h3>

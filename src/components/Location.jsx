@@ -1,4 +1,5 @@
 import './Location.css'
+import imagesData from '../data/images.json'
 
 const mapLinks = [
   {
@@ -14,6 +15,8 @@ const mapLinks = [
     href: 'https://www.openstreetmap.org/?mlat=24.7433&mlon=67.8909#map=13/24.7433/67.8909',
   },
 ]
+
+const siteImages = imagesData.filter((img) => img.category === 'landscape' || img.category === 'architecture')
 
 function Location() {
   return (
@@ -48,6 +51,33 @@ function Location() {
             referrerPolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps?q=24.7433,67.8909&z=13&output=embed"
           />
+        </div>
+      </div>
+
+      <div className="location__gallery">
+        <h3 className="location__gallery-title">Site Photography</h3>
+        <div className="location__gallery-grid">
+          {siteImages.map((img) => (
+            <figure key={img.id} className="location__gallery-item">
+              <img
+                key={img.url}
+                src={img.url}
+                alt={img.alt}
+                loading="eager"
+                decoding="async"
+                crossOrigin="anonymous"
+                onLoad={(e) => {
+                  e.target.style.display = 'block'
+                  e.target.parentElement.style.background = 'none'
+                }}
+                onError={(e) => {
+                  e.target.parentElement.style.background = 'linear-gradient(135deg, rgba(201, 185, 154, 0.3), rgba(28, 107, 115, 0.1))'
+                  e.target.style.display = 'none'
+                }}
+              />
+              <figcaption>{img.title}</figcaption>
+            </figure>
+          ))}
         </div>
       </div>
     </section>

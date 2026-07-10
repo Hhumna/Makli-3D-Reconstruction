@@ -1,0 +1,114 @@
+[
+  {
+    "id": "makli-overview",
+    "title": "Overview of Makli Hills",
+    "alt": "Panoramic view of Makli Necropolis landscape",
+    "url": "/images/overview-of-makli-hills.jpg",
+    "category": "landscape",
+    "source": "Local"
+  },
+  {
+    "id": "samma-dynasty",
+    "title": "Samma Dynasty funerary image",
+    "alt": "Samma Dynasty tomb and funerary architecture detail",
+    "url": "/images/samma-dynasty.jpg",
+    "category": "monuments",
+    "source": "Local"
+  },
+  {
+    "id": "arghun-dynasty",
+    "title": "Arghun Dynasty image",
+    "alt": "Arghun Dynasty era scene and architectural context",
+    "url": "/images/arghun-dynasty.jpg",
+    "category": "monuments",
+    "source": "Local"
+  },
+  {
+    "id": "tarkhan-dynasty",
+    "title": "Tarkhan Dynasty image",
+    "alt": "Tarkhan Dynasty tomb and decorative architecture detail",
+    "url": "/images/tarkhan-dynasty.jpg",
+    "category": "monuments",
+    "source": "Local"
+  },
+  {
+    "id": "mughal-dynasty",
+    "title": "Mughal Period image",
+    "alt": "Mughal-era funerary and architectural context at Makli",
+    "url": "/images/mughal-dynasty.jpg",
+    "category": "monuments",
+    "source": "Local"
+  },
+  {
+    "id": "makli-pillars",
+    "title": "Beautiful architecture - pillars at Makli",
+    "alt": "Carved stone pillars with intricate architectural details",
+    "url": "/images/tile-detail.jpg",
+    "category": "architecture",
+    "source": "Local"
+  },
+  {
+    "id": "makli-necropolis-overview",
+    "title": "Makli Necropolis Overview",
+    "alt": "General view of Makli Necropolis cemetery with multiple tombs",
+    "url": "/images/makli-necropolis-overview.jpg",
+    "category": "landscape",
+    "source": "Local"
+  },
+  {
+    "id": "makli-tilework",
+    "title": "Tilework and Decorative Elements",
+    "alt": "Blue and turquoise glazed tile detail on tomb dome",
+    "url": "/images/tile-detail.jpg",
+    "category": "decorative",
+    "source": "Local"
+  },
+  {
+    "id": "makli-inscriptions",
+    "title": "Inscriptions and Carving",
+    "alt": "Decorative carving with Arabic and Persian inscriptions",
+    "url": "/images/carving-detail.jpg",
+    "category": "details",
+    "source": "Local"
+  },
+  {
+    "id": "jam-nizamuddin-tomb",
+    "title": "Tomb of Sultan Jam Nizamuddin",
+    "alt": "Architectural details of Jam Nizamuddin tomb structure",
+    "url": "/images/tomb-jam-nizamuddin.jpg",
+    "category": "monuments",
+    "source": "Local"
+  },
+  {
+    "id": "makli-pavilion",
+    "title": "Pavilion and Corridor Structure",
+    "alt": "Stone pavilion with carved pillars and arched corridors",
+    "url": "/images/tomb-isa-khan.jpg",
+    "category": "architecture",
+    "source": "Local"
+  },
+  {
+    "id": "makli-dome",
+    "title": "Dome and Architectural Detail",
+    "alt": "Close-up of carved dome and architectural elements",
+    "url": "/images/tile-detail.jpg",
+    "category": "decorative",
+    "source": "Local"
+  },
+  {
+    "id": "makli-cemetery-layout",
+    "title": "Cemetery Layout and Arrangement",
+    "alt": "Wide view showing multiple tombstones and funerary structures",
+    "url": "/images/cemetery-layout.jpg",
+    "category": "landscape",
+    "source": "Local"
+  },
+  {
+    "id": "makli-carved-stones",
+    "title": "Carved Stone Details",
+    "alt": "Intricate geometric and floral carved patterns on stone",
+    "url": "/images/carving-detail.jpg",
+    "category": "details",
+    "source": "Local"
+  }
+]

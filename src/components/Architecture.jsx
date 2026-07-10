@@ -1,43 +1,49 @@
 import { useEffect, useRef, useState } from 'react'
 import './Architecture.css'
+import imagesData from '../data/images.json'
 
 const features = [
   {
     title: 'Carved sandstone relief',
     text:
       'Chaukhandi-style slabs are cut into dense geometric and floral patterns that turn each surface into a field of ornament rather than a plain wall.',
-    image: '/images/tomb-jam-nizamuddin.jpg',
+    imageId: 'makli-inscriptions',
     alt: 'Carved sandstone relief on a tomb facade',
   },
   {
     title: 'Gujarati-style jharokas',
     text:
       'The tomb of Jam Nizamuddin II shows carved balconies and projecting openings that echo Gujarati architectural forms, giving the structure a strong vertical rhythm.',
-    image: '/images/tomb-isa-khan.jpg',
+    imageId: 'makli-necropolis-overview',
     alt: 'A tomb facade with carved balconies',
   },
   {
     title: 'Glazed tilework',
     text:
       'Later Tarkhan-era domes and pavilions were enriched with glazed blue and turquoise tilework, forming a luminous contrast to the surrounding stone.',
-    image: '/images/tile-detail.jpg',
+    imageId: 'makli-tilework',
     alt: 'Blue and turquoise glazed tile detail',
   },
   {
     title: 'Inscriptions and scholarship',
     text:
       'Arabic and Persian inscriptions mark the scholarly and spiritual status of those interred, and they are often woven into the same decorative field as the architectural carving.',
-    image: '/images/carving-detail.jpg',
+    imageId: 'makli-carved-stones',
     alt: 'Decorative carving with inscriptions',
   },
   {
     title: 'Corridors and pavilions',
     text:
       'Many tombs are arranged as corridors and pavilions, with roofs carried on carved stone pillars that create a quiet procession through the funerary landscape.',
-    image: '/images/tomb-jam-nizamuddin.jpg',
+    imageId: 'makli-pavilion',
     alt: 'Stone pavilion tomb structure',
   },
 ]
+
+const getImageUrl = (imageId) => {
+  const image = imagesData.find((img) => img.id === imageId)
+  return image ? image.url : ''
+}
 
 function Architecture() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -69,7 +75,8 @@ function Architecture() {
     return () => observer.disconnect()
   }, [])
 
-  const activeImage = features[currentIndex]?.image
+  const activeImageId = features[currentIndex]?.imageId
+  const activeImage = getImageUrl(activeImageId)
   const activeAlt = features[currentIndex]?.alt
 
   return (
@@ -78,7 +85,24 @@ function Architecture() {
         <div className="architecture__gallery" aria-label="Architecture imagery">
           <div className="architecture__frame">
             {activeImage ? (
-              <img src={activeImage} alt={activeAlt} loading="lazy" decoding="async" />
+              <img
+                key={activeImage}
+                src={activeImage}
+                alt={activeAlt}
+                loading="eager"
+                decoding="async"
+                crossOrigin="anonymous"
+                onLoad={(e) => {
+                  e.target.style.display = 'block'
+                  e.target.parentElement.style.backgroundImage = 'none'
+                  e.target.parentElement.style.backgroundColor = 'transparent'
+                }}
+                onError={(e) => {
+                  e.target.style.display = 'none'
+                  e.target.parentElement.style.backgroundImage = 'linear-gradient(135deg, rgba(201, 185, 154, 0.4), rgba(239, 232, 216, 0.9))'
+                  e.target.parentElement.style.backgroundColor = 'transparent'
+                }}
+              />
             ) : (
               <div className="architecture__placeholder">
                 <span className="architecture__placeholder-icon">📷</span>
