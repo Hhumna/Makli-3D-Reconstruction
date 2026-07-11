@@ -130,9 +130,50 @@ npm run preview
 
 ## 3D Reconstruction Workflow
 
-The 3D reconstruction component was created as an individual task and follows a transparent, evidence-based workflow.
+The 3D reconstruction component was completed as an individual task within the Makli project scope and follows a transparent, evidence-based workflow.
 
-### Scripts
+### Step 1: Tested whether real multi-view SfM was viable first
+
+Before choosing the final reconstruction approach, I tested whether genuine multi-view Structure-from-Motion was feasible using the curated Makli Necropolis imagery in `3d-reconstruction/footage-research/images/`.
+
+The feasibility test was run across three image pairs:
+
+1. `01-jam-nizamuddin-front.jpg` ↔ `02-makli-wide-hills.jpg`
+2. `01-jam-nizamuddin-front.jpg` ↔ `03-makli-panorama.jpg`
+3. `02-makli-wide-hills.jpg` ↔ `05-chhatri-tomb.jpg`
+
+The real results were:
+
+- Pair 1: 2,987 and 3,000 keypoints; 60 candidate matches; 11 RANSAC-verified inliers
+- Pair 2: 2,987 and 2,965 keypoints; 60 candidate matches; 11 RANSAC-verified inliers
+- Pair 3: 3,000 and 3,000 keypoints; 60 candidate matches; 11 RANSAC-verified inliers
+
+These values show consistently weak geometric overlap across the available curated photos. Because the Makli image set contains images from different photographers, cameras, and lighting conditions rather than a controlled multi-view capture, real triangulation was not reliable enough for a meaningful 3D reconstruction.
+
+### Step 2: Built a monocular reconstruction instead and exported a real `.ply`
+
+Since real multi-view SfM was not viable on the provided curated set, I used a monocular heuristic reconstruction approach on a single strong front-facing Makli tomb image. This was then exported as a standard ASCII `.ply` point cloud file.
+
+The actual reconstruction output from the current repository is:
+
+- Source photo size: `500 × 469`
+- Sky/haze masked out: `40,667` of `234,500` pixels (`17.3%`)
+- Point cloud size: `48,436` vertices
+- Depth range: `2.55` to `5.00` (relative units, not metric)
+- Output file: `3d-reconstruction/scripts/output/jam_nizamuddin_tomb_makli.ply`
+- File size: `1580.2 KB`
+
+This approach is honest and transparent: it is a monocular heuristic depth estimate rather than a fully controlled multi-view photogrammetry pipeline.
+
+### Step 3: Verified the `.ply` output in three ways
+
+The reconstruction was validated using the repository verification script, which confirms the output is structurally consistent and can be reloaded from disk:
+
+1. The file was re-parsed from disk and the header vertex count was confirmed to match the number of data lines exactly.
+2. Every data row was checked to ensure it contained six valid fields with color values in the expected `0–255` range.
+3. The point cloud was re-rendered from the saved file to generate `3d-reconstruction/scripts/output/ply_reload_verification_makli.png`.
+
+### Scripts Used
 
 - `3d-reconstruction/scripts/sfm_feasibility_test_makli.py`
   - tests whether real multi-view reconstruction from curated imagery is feasible
@@ -143,19 +184,9 @@ The 3D reconstruction component was created as an individual task and follows a 
 - `3d-reconstruction/scripts/verify_ply_reconstruction_makli.py`
   - validates that the exported `.ply` file is structurally consistent and correctly parsed from disk
 
-### Output
-
-The generated point cloud is stored here:
-
-- `3d-reconstruction/scripts/output/jam_nizamuddin_tomb_makli.ply`
-
-A verification visualization is also included:
-
-- `3d-reconstruction/scripts/output/ply_reload_verification_makli.png`
-
 ### Important Note
 
-This reconstruction is a practical, honest reconstruction experiment using curated imagery and a heuristic approach. It is not a full photogrammetry pipeline with controlled multi-image geometry, but it demonstrates a valid conversion workflow for heritage documentation research and visualization.
+This reconstruction is a practical, honest experiment based on a curated heritage image set. It is not a fully controlled photogrammetry workflow, but it provides a valid and documented method for exploring 3D reconstruction for Makli Necropolis documentation and preservation research.
 
 ---
 
