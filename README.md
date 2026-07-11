@@ -1,5 +1,7 @@
 # Makli Necropolis — Digital Preservation Project
 
+Live site: https://makli-3d-reconstruction.netlify.app/
+
 A research-led, educational, and visually structured web presentation focused on the historical, architectural, and conservation significance of Makli Necropolis in Thatta, Pakistan.
 
 This repository contains two connected parts:
@@ -158,7 +160,9 @@ This reconstruction is a practical, honest reconstruction experiment using curat
 ---
 
 ## Deployment
+The project is currently deployed on Netlify:
 
+- Live link: https://makli-3d-reconstruction.netlify.app/
 This project is a static frontend and can be deployed using any standard static hosting service.
 
 ### Recommended deployment options
