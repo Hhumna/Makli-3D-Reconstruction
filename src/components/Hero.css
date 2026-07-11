@@ -3,8 +3,8 @@
   min-height: 100vh;
   overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-start;
   padding: 6rem 1.5rem 4.5rem;
   background:
     linear-gradient(180deg, rgba(33, 29, 24, 0.28) 0%, rgba(33, 29, 24, 0.7) 100%),
@@ -15,9 +15,9 @@
 .hero__media {
   position: absolute;
   inset: 0;
-  background-image: url('/images/hero-skyline.jpg');
+  background-image: url('/images/overview-of-makli-hills.jpg');
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 38%;
   background-repeat: no-repeat;
 }
 
@@ -32,8 +32,10 @@
   position: relative;
   z-index: 2;
   width: min(100%, 860px);
+  margin-left: clamp(1rem, 5vw, 3rem);
   display: grid;
   gap: 1.25rem;
+  padding-bottom: 2rem;
 }
 
 .hero__eyebrow {
@@ -164,10 +166,12 @@
 @media (max-width: 767px) {
   .hero {
     align-items: flex-end;
+    justify-content: flex-start;
     padding: 6rem 1rem 5rem;
   }
 
   .hero__content {
+    margin-left: 0;
     gap: 1rem;
     padding-bottom: 2.5rem;
   }
