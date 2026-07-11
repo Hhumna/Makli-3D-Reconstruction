@@ -41,24 +41,24 @@ function TombGeometry({ isInteracting, prefersReducedMotion }) {
     <group ref={groupRef}>
       <mesh position={[0, 0.4, 0]}>
         <boxGeometry args={[2.1, 0.18, 2.1]} />
-        <meshStandardMaterial color="var(--color-sandstone)" roughness={0.82} metalness={0.04} />
+        <meshStandardMaterial color="#C9B99A" roughness={0.82} metalness={0.04} />
       </mesh>
 
       {columns.map((column, index) => (
         <mesh key={index} position={[column.x, 0.95, column.z]}>
           <cylinderGeometry args={[0.05, 0.06, 1.2, 8]} />
-          <meshStandardMaterial color="var(--color-basalt)" roughness={0.7} metalness={0.05} />
+          <meshStandardMaterial color="#211D18" roughness={0.7} metalness={0.05} />
         </mesh>
       ))}
 
       <mesh position={[0, 1.45, 0]}>
         <coneGeometry args={[1.2, 0.9, 6]} />
-        <meshStandardMaterial color="var(--color-sandstone)" roughness={0.8} metalness={0.04} />
+        <meshStandardMaterial color="#C9B99A" roughness={0.8} metalness={0.04} />
       </mesh>
 
       <mesh position={[0, 1.72, 0]}>
         <sphereGeometry args={[0.42, 16, 16]} />
-        <meshStandardMaterial color="var(--color-aged-gold)" roughness={0.55} metalness={0.08} />
+        <meshStandardMaterial color="#A9812F" roughness={0.55} metalness={0.08} />
       </mesh>
     </group>
   )

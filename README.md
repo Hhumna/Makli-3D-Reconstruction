@@ -66,8 +66,10 @@ As part of the digital preservation angle, a separate individual reconstruction 
 This work includes:
 
 - feasibility testing for real multi-view reconstruction
-- a fallback monocular heuristic reconstruction approach
-- a standard `.ply` export for 3D visualization
+- a browser-side live reconstruction demo with upload, run, and `.ply` download controls
+- a fallback monocular heuristic reconstruction approach that can run in a Web Worker when supported
+- upload safeguards that reject oversized images above 15MB before processing starts
+- keyboard-accessible controls and mobile-friendly canvas sizing for the live point-cloud experience
 - validation scripts to verify the generated output structure and file integrity
 
 ---
@@ -76,15 +78,25 @@ This work includes:
 
 ```text
 .
-├── src/                           # React site source files
-├── public/images/                 # Locally stored site imagery
+├── src/
+│   ├── components/
+│   │   ├── Reconstruction.jsx          # Main reconstruction section and pipeline cards
+│   │   ├── ReconstructionUploader.jsx  # Upload / run / download UI
+│   │   ├── LivePointCloud.jsx          # Live point-cloud viewer
+│   │   └── TombModel.jsx               # Conceptual 3D model demo
+│   ├── utils/
+│   │   ├── exportPly.js                 # `.ply` export helpers
+│   │   └── reconstructPointCloud.js    # Canvas + worker orchestration for browser-side reconstruction
+│   └── workers/
+│       └── reconstructWorker.js        # Off-main-thread heuristic reconstruction worker
+├── public/images/                       # Locally stored site imagery
 ├── 3d-reconstruction/
-│   ├── footage-research/images/   # Curated Makli imagery
+│   ├── footage-research/images/         # Curated Makli imagery
 │   └── scripts/
 │       ├── build_ply_reconstruction_makli.py
 │       ├── sfm_feasibility_test_makli.py
 │       └── verify_ply_reconstruction_makli.py
-├── package.json                   # Vite/React project scripts
+├── package.json                         # Vite/React project scripts
 └── README.md
 ```
 
@@ -96,6 +108,7 @@ This work includes:
 - Vite 8
 - CSS custom styling for the site
 - Three.js / React Three Fiber integration for 3D-related content support
+- Browser-side Web Worker reconstruction path for large-image processing without blocking the UI thread
 - Python scripts for reconstruction and validation
 
 ---
@@ -150,11 +163,19 @@ The real results were:
 
 These values show consistently weak geometric overlap across the available curated photos. Because the Makli image set contains images from different photographers, cameras, and lighting conditions rather than a controlled multi-view capture, real triangulation was not reliable enough for a meaningful 3D reconstruction.
 
-### Step 2: Built a monocular reconstruction instead and exported a real `.ply`
+### Step 2: Added a live browser-side reconstruction demo and exported a real `.ply`
 
-Since real multi-view SfM was not viable on the provided curated set, I used a monocular heuristic reconstruction approach on a single strong front-facing Makli tomb image. This was then exported as a standard ASCII `.ply` point cloud file.
+Since real multi-view SfM was not viable on the provided curated set, I added a browser-side live reconstruction experience that lets a user upload a Makli photo, run a heuristic point-cloud estimate, and download the resulting `.ply` output directly in the browser.
 
-The actual reconstruction output from the current repository is:
+The browser workflow is intentionally lightweight and transparent:
+
+- the image is downscaled for computation to keep the live experience responsive
+- the compute-heavy point-cloud heuristic is offloaded to a Web Worker when workers are supported
+- the code falls back gracefully to main-thread processing when a worker is unavailable
+- oversized uploads are rejected at the UI level before processing begins, with a clear inline error
+- the interaction is keyboard-accessible and mobile-friendly
+
+The current repository also still includes the original Python proof-of-concept export, which generated the following verified output:
 
 - Source photo size: `500 × 469`
 - Sky/haze masked out: `40,667` of `234,500` pixels (`17.3%`)
@@ -163,7 +184,7 @@ The actual reconstruction output from the current repository is:
 - Output file: `3d-reconstruction/scripts/output/jam_nizamuddin_tomb_makli.ply`
 - File size: `1580.2 KB`
 
-This approach is honest and transparent: it is a monocular heuristic depth estimate rather than a fully controlled multi-view photogrammetry pipeline.
+This approach remains honest and transparent: it is a monocular heuristic depth estimate rather than a fully controlled multi-view photogrammetry pipeline.
 
 ### Step 3: Verified the `.ply` output in three ways
 
@@ -196,19 +217,6 @@ The project is currently deployed on Netlify:
 - Live link: https://makli-3d-reconstruction.netlify.app/
 This project is a static frontend and can be deployed using any standard static hosting service.
 
-### Recommended deployment options
-
-- Netlify
-- Vercel
-- GitHub Pages
-- Cloudflare Pages
-
-For a Vite app, the typical workflow is:
-
-1. run `npm run build`
-2. deploy the generated `dist/` folder
-
----
 
 ## Project Outcome
 
@@ -223,6 +231,6 @@ The result is a clean, research-informed website and an individual 3D reconstruc
 
 ## Acknowledgements
 
-Special thanks to Team Makli, with particular recognition to Humna Sadia for leading the project, driving the research, and developing the website presentation. Muhammad Ammar is also acknowledged for preparing the presentation slide contribution.
+Special thanks to Team Makli for driving the research, and developing the website presentation. Muhammad Ammar is also acknowledged for preparing the presentation slide contribution.
 
 This project was completed with a strong emphasis on responsible documentation, research clarity, and digital heritage communication.
